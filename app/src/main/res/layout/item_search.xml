@@ -27,12 +27,22 @@
         app:layout_constraintTop_toTopOf="@id/image" />
 
     <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/item_from_demo"
+        app:layout_constraintStart_toStartOf="@+id/image_text"
+        app:layout_constraintTop_toBottomOf="@+id/image_text" />
+
+    <TextView
         android:id="@+id/date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="@string/item_date_text_demo"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/image_text"
-        app:layout_constraintTop_toBottomOf="@+id/image_text" />
+        app:layout_constraintTop_toBottomOf="@+id/title_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

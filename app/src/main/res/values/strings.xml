@@ -6,4 +6,5 @@
     <string name="search_edittext">검색</string>
     <string name="item_image_text_demo"><![CDATA[<image>]]></string>
     <string name="item_date_text_demo">date</string>
+    <string name="item_from_demo">중앙일보</string>
 </resources>

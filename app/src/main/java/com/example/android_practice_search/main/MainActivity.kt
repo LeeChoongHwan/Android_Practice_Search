@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
-    private fun initView() = with(binding) {
-        viewPager.adapter = viewPagerAdapter
+    private fun initView(){
+        binding.viewPager.adapter = viewPagerAdapter
 
-        TabLayoutMediator(tablayout, viewPager) { tab, position ->
+        TabLayoutMediator(binding.tablayout, binding.viewPager) { tab, position ->
             tab.setText(viewPagerAdapter.getTitle(position))
         }.attach()
     }
