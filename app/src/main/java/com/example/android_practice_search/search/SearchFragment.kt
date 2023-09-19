@@ -44,6 +44,10 @@ class SearchFragment : Fragment() {
     private fun initView() {
         binding.recyclerView.adapter = listAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
+        binding.searchButton.setOnClickListener {
+            val searchText = binding.searchEdittext.text.toString()
+        }
     }
 
     override fun onDestroyView() {
