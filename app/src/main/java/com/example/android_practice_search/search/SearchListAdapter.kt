@@ -33,7 +33,6 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemSearchBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item : SearchModel) {
-            binding.imageText.text = item.type
             binding.titleText.text = item.title
             binding.dateText.text = item.date
         }
