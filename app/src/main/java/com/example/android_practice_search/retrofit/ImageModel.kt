@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class ImageModel(
     @SerializedName("meta")
-    val imageMeta : ImageMeta,
+    val imageMeta: ImageMeta,
     @SerializedName("documents")
-    val imageDocument : List<ImageItem>
+    val imageDocument: ArrayList<ImageItem>
 ) {
 
     data class ImageMeta(

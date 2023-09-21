@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".bookmark.BookmarkFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="북마크" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/item_search"/>
 
 </FrameLayout>

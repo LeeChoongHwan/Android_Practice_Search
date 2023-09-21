@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         initView()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.viewPager.adapter = viewPagerAdapter
 
         TabLayoutMediator(binding.tablayout, binding.viewPager) { tab, position ->

@@ -15,25 +15,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/image_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/item_image_text_demo"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toTopOf="@id/image" />
 
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="@string/item_from_demo"
-        app:layout_constraintStart_toStartOf="@+id/image_text"
-        app:layout_constraintTop_toBottomOf="@+id/image_text" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toTopOf="@id/image" />
 
     <TextView
         android:id="@+id/date_text"
@@ -42,7 +35,17 @@
         android:layout_marginTop="5dp"
         android:text="@string/item_date_text_demo"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/image_text"
+        app:layout_constraintStart_toStartOf="@+id/title_text"
         app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/ic_fav"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

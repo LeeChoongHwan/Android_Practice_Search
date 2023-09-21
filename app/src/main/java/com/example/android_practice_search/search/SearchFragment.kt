@@ -1,5 +1,6 @@
 package com.example.android_practice_search.search
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,13 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.android_practice_search.constants.Constants
 import com.example.android_practice_search.constants.KakaoKey
 import com.example.android_practice_search.databinding.FragmentSearchBinding
 import com.example.android_practice_search.retrofit.ImageModel
-import com.example.android_practice_search.retrofit.retrofitClient
-import com.example.android_practice_search.retrofit.retrofitClient.apiService
-import com.example.android_practice_search.retrofit.retrofitInterface
+import com.example.android_practice_search.retrofit.RetrofitClient.apiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,10 +51,11 @@ class SearchFragment : Fragment() {
         binding.searchButton.setOnClickListener {
             val searchText = binding.searchEdittext.text.toString()
 
-            if(searchText.isNotEmpty()) {
+            if (searchText.isNotEmpty()) {
+                searchResultList.clear()
+                listAdapter.clearItems()
                 getImageResult(searchText)
-            }
-            else {
+            } else {
 
             }
 
@@ -64,32 +63,22 @@ class SearchFragment : Fragment() {
     }
 
     private fun getImageResult(searchText: String) {
-//        val response = apiService.getImage(KakaoKey.AUTH_HEADER, searchText, "recency", 1, 80)
-//        response.imageDocument.forEach { document ->
-//            val imageUrl = document.thumbnailUrl
-//            val title = document.displaySiteName
-//            val dateTime = document.datetime
-//
-//            searchResultList.add(SearchModel(imageUrl, title, dateTime))
-//        }
-//
-//        listAdapter.addItems(searchResultList)
-        apiService.getImage(Constants.KAKAO_BASE_URL, searchText, "recency", 1, 80)?.enqueue(object :
+        apiService.getImage(KakaoKey.AUTH_HEADER, searchText, "recency", 1, 60)?.enqueue(object :
             Callback<ImageModel?> {
             override fun onResponse(call: Call<ImageModel?>, response: Response<ImageModel?>) {
-                response.body()?.imageDocument?.forEach { document ->
-                    val imageUrl = document.thumbnailUrl
-                    val title = document.displaySiteName
-                    val dateTime = document.datetime
+                for (img in response.body()?.imageDocument!!) {
+                    val imageUrl = img.thumbnailUrl
+                    val title = img.displaySiteName
+                    val dateTime = img.datetime
 
                     searchResultList.add(SearchModel(imageUrl, title, dateTime))
-                    Log.d("result", imageUrl)
-                    listAdapter.addItems(searchResultList)
+
                 }
+                listAdapter.addItems(searchResultList)
             }
 
             override fun onFailure(call: Call<ImageModel?>, t: Throwable) {
-                Log.d("result", "fail")
+                Log.d("result", "$t")
             }
 
         })
